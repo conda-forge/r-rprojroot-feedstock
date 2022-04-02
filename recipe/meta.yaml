@@ -1,4 +1,4 @@
-{% set version = "2.0.2" %}
+{% set version = "2.0.3" %}
 
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
@@ -12,7 +12,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/rprojroot_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/rprojroot/rprojroot_{{ version }}.tar.gz
-  sha256: 5fa161f0d4ac3b7a99dc6aa2d832251001dc92e93c828593a51fe90afd019e1f
+  sha256: 50604247470e910cecfe9b76df754bf96a0d701f81b732f7aa9c90a20d30f897
 
 build:
   noarch: generic
