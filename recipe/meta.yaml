@@ -1,5 +1,4 @@
 {% set version = "2.0.3" %}
-
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -8,17 +7,15 @@ package:
   version: {{ version|replace("-", "_") }}
 
 source:
-  fn: rprojroot_{{ version }}.tar.gz
   url:
     - {{ cran_mirror }}/src/contrib/rprojroot_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/rprojroot/rprojroot_{{ version }}.tar.gz
   sha256: 50604247470e910cecfe9b76df754bf96a0d701f81b732f7aa9c90a20d30f897
 
 build:
+  merge_build_host: True  # [win]
+  number: 0
   noarch: generic
-  merge_build_host: true  # [win]
-  number: 2
-
   rpaths:
     - lib/R/lib/
     - lib/
@@ -26,14 +23,11 @@ build:
 requirements:
   build:
     - {{ posix }}zip               # [win]
-
+    - cross-r-base {{ r_base }}    # [build_platform != target_platform]
   host:
     - r-base
-    - r-backports
-
   run:
     - r-base
-    - r-backports
 
 test:
   commands:
@@ -42,11 +36,12 @@ test:
 
 about:
   home: https://github.com/krlmlr/rprojroot, https://krlmlr.github.io/rprojroot
-  license: GPL-3
+  license: MIT
   summary: Robust, reliable and flexible paths to files below a project root. The 'root' of a project is defined as a directory that matches a certain criterion, e.g., it contains a certain regular file.
-  license_family: GPL3
-  license_file: {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3  # [unix]
-  license_file: {{ environ["PREFIX"] }}\R\share\licenses\GPL-3  # [win]
+  license_family: MIT
+  license_file:
+    - {{ environ["PREFIX"] }}/lib/R/share/licenses/MIT
+    - LICENSE
 
 extra:
   recipe-maintainers:
