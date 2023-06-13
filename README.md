@@ -5,7 +5,7 @@ Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-rprojroot-fee
 
 Home: https://github.com/krlmlr/rprojroot, https://krlmlr.github.io/rprojroot
 
-Package license: GPL-3
+Package license: MIT
 
 Summary: Robust, reliable and flexible paths to files below a project root. The 'root' of a project is defined as a directory that matches a certain criterion, e.g., it contains a certain regular file.
 
