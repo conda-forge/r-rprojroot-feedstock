@@ -1,6 +1,5 @@
 {% set version = "2.0.4" %}
 {% set posix = 'm2-' if win else '' %}
-{% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-rprojroot
@@ -13,8 +12,7 @@ source:
   sha256: b5f463fb25a24dac7a4ca916be57dbe22b5262e1f41e53871ca83e57d4336e99
 
 build:
-  merge_build_host: true  # [win]
-  number: 0
+  number: 1
   noarch: generic
   rpaths:
     - lib/R/lib/
